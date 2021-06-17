@@ -47,7 +47,7 @@
 
     </header>
     <main>
-        <div class="container">
+        <!-- <div class="container">
             <div class="row">
                 <div class="col-sm-12">
                     <button class="btn btn-dark lead">Agregar Paciente</button>
@@ -67,7 +67,41 @@
                     </table>
                 </div>
             </div>
+        </div>-->
+        <div class="container">
+            <div class="row">
+                <h2>CRUD pacientes</h2>
+                <div class="col-sm-12">
+                    <div class="card text-left">
+                        <div class="card-header">
+                            <ul class="nav nav-tabs card-header-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#">Crud PDO</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <span class="btn btn-dark" data-toggle="modal" data-target="#insertar">
+                                        <i class="fas fa-plus-circle"></i> Nuevo registro
+                                    </span>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-12">
+
+                                    <div id="tablaDatos"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
+
     </main>
     <footer>
         <div class="contenedor-footer">
@@ -90,15 +124,15 @@
         </div>
         <h2 class="titulo-final">&copy; Equipo 4 Desing | Equipo 4</h2>
     </footer>
-
-
+    <?php require_once "../modalInsert.php" ?>
+    <?php require_once "../modalUpdate.php" ?>
     <script src="../vendor/jquery/jquery-3.2.1.min.js"></script>
     <script src="../vendor/bootstrap/js/popper.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="../vendor/sweetalert/sweetalert2.js"></script>
     <script src="../vendor/DataTables/js/jq.dataT.min.js"></script>
     <script src="../vendor/DataTables/js/dataTables.bootstrap4.min.js"></script>
     <script src="../js/Table.js"></script>
-
     <script type="text/javascript">
         Swal.fire(
             'Estas en el Apartado de Pacientes',
