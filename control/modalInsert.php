@@ -10,16 +10,18 @@
       </div>
       <div class="modal-body">
         <form id="frminsert" onsubmit="return insertarDatos()" method="post" autocomplete="off">
-          <label>Nombre</label>
-          <input type="text" id="nombre" name="nombre" class="form-control form-control-sm" required="">
-          <label>Sueldo</label>
-          <input type="text" id="sueldo" name="sueldo" class="form-control form-control-sm" required="">
+          <label>Nombre Paciente</label>
+          <input type="text" id="nombre_paciente" name="nombre_paciente" class="form-control form-control-sm" required="">
+          <label>Apellido Paciente</label>
+          <input type="text" id="apellido_paciente" name="apellido_paciente" class="form-control form-control-sm" required="">
           <label>Edad</label>
-          <input type="text" id="edad" name="edad" class="form-control form-control-sm" required="">
-          <label>Fecha de registro</label>
-          <input type="text" id="fecha" name="fecha" class="form-control form-control-sm" required="">
+          <input type="text" id="edad_paciente" name="edad_paciente" class="form-control form-control-sm" required="">
+          <label>Nombre del familiar</label>
+          <input type="text" id="nom_fam_paciente" name="nom_fam_paciente" class="form-control form-control-sm" required="">
+          <label>Causa</label>
+          <input type="text" id="causa_paciente" name="causa_paciente" class="form-control form-control-sm" required="">
           <br>
-          <input type="submit" value="Guardar" class="btn btn-primary">
+          <input type="submit" value="Guardar" class="btn btn-dark">
         </form>
       </div>
       <div class="modal-footer">

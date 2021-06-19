@@ -91,8 +91,77 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-12">
+                                    <div class="container" style="background-color:#F3D3F7; font-weight: bold;">
+                                        <div class="col-sm-12">
+                                            <div class="table-responsive">
+                                                <table class="table table-hover table-condense" id="tablaCrud">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Id Paciente </th>
+                                                            <th>Nombre</th>
+                                                            <th>Apellido</th>
+                                                            <th>Edad</th>
+                                                            <th>Nombre Familiar</th>
+                                                            <th>Causa</th>
+                                                            <th></th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <?php
+                                                        include "Conexion.php";
+                                                        $Conexion = new Conexion2();
+                                                        $conectar = $Conexion->conectar();
+                                                        //esto es el query 
+                                                        $sql = "SELECT id_persona, paterno, materno, nombre FROM t_personas ORDER BY paterno";
+                                                        $respuesta = mysqli_query($conectar, $sql);
+                                                    ?>
+                                                        <?php 
+                                                            //todo lo que obtenga la respuesta la va a obtener en un arreglo asociativo
+                                                            while($mostrar = mysqli_fetch_all($respuesta)){
+                                                            $idPersona = $mostrar['id_persona'];
+                                                        ?>
 
-                                    <div id="tablaDatos"></div>
+                                                        <tr>
+                                                            <td><?php echo $mostrar['id_persona'];?></td>
+                                                            <td><?php echo $mostrar['paterno'];?></td>
+                                                            <td><?php echo $mostrar['materno'];?></td>
+                                                            <td><?php echo $mostrar['nombre'];?></td>
+                                                            <td><?php echo $mostrar['nombre'];?></td>
+                                                            <td><?php echo $mostrar['nombre'];?></td>
+                                                            <td>
+                                                                <form method="POST" action="obtenerDatosActualizar.php"
+                                                                    style="font-weight: bold;">
+                                                                    <input type="text" name="idPersonaActualizar"
+                                                                        value="<?php echo $idPersona ?>" hidden>
+                                                                    <button class="btn btn-warning"
+                                                                        style="font-weight: bold;">Actualizar</button>
+                                                                </form>
+                                                            </td>
+                                                            <td>
+                                                                <form method="POST" action="eliminar.php">
+                                                                    <input type="text" name="idPersonaEliminar"
+                                                                        value="<?php echo $idPersona ?>" hidden>
+                                                                    <button class="btn btn-danger"
+                                                                        style="font-weight: bold;">Eliminar</button>
+                                                                </form>
+                                                            </td>
+                                                        </tr>
+                                                        <?php 
+                                                            }
+                                                        ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <script type="text/javascript">
+                                        $(document).ready(function () {
+                                            $('#tablaCrud').DataTable();
+                                        });
+                                    </script>
+
+
                                 </div>
                             </div>
                         </div>
@@ -124,8 +193,8 @@
         </div>
         <h2 class="titulo-final">&copy; Equipo 4 Desing | Equipo 4</h2>
     </footer>
-    <?php require_once "../modalInsert.php" ?>
-    <?php require_once "../modalUpdate.php" ?>
+    <?php require_once "../control/modalInsert.php" ?>
+    <?php require_once "../control/modalUpdate.php" ?>
     <script src="../vendor/jquery/jquery-3.2.1.min.js"></script>
     <script src="../vendor/bootstrap/js/popper.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -133,13 +202,13 @@
     <script src="../vendor/DataTables/js/jq.dataT.min.js"></script>
     <script src="../vendor/DataTables/js/dataTables.bootstrap4.min.js"></script>
     <script src="../js/Table.js"></script>
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         Swal.fire(
             'Estas en el Apartado de Pacientes',
             '',
             'success'
         )
-    </script>
+    </script> -->
 </body>
 
 </html>

@@ -1,6 +1,6 @@
     
 <?php 
-    $conexion = mysqli_connect("localhost:3306","root","2202","pruebaBad");
+    $conexion = mysqli_connect("localhost:3306","root","2202","Equipo4");
     //  Variables con $ el metodo POST se ocupa desde objetos 
     // El metodo GEST se ocupa desde la url
     //Entre los corchetes se utilizo el nombre de los input para hacer el recibimiento de datos
