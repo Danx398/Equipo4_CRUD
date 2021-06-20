@@ -1,4 +1,9 @@
-$('#tablaCrud').DataTable({
+$(document).ready(function() {
+    $('#example').DataTable();
+});
+    
+
+$('#example').DataTable({
     "language": {
         "sProcessing":    "Procesando...",
         "sLengthMenu":    "Mostrar _MENU_ registros",

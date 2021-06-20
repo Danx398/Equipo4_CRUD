@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Principal</title>
     <link rel="icon" type="image/png" href="../images/icons/database_data_20916.ico" />
-    <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrapcss.css">
     <link rel="stylesheet" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/util.css">
     <link rel="stylesheet" href="../css/main.css">
@@ -47,6 +47,60 @@
 
     </header>
     <main>
+        <?php 
+            include "../app/Conexion.php";
+            $sql= "SELECT * FROM paciente";
+            $resultado= mysqli_query($conexion, $sql);
+         ?>
+        <div class="container">
+            <div class="row">
+                <div class="col-ms-12">
+                    <h1 class="text-center">Crud Pacientes</h1>
+                    <a class="btn btn-dark items-align" href="../app/agregarPaciente.php">Nuevo Paciente</a>
+                </div>
+            </div>
+            <hr><hr>
+            <div class="row mt-5">
+                <div class="col-sm-12">
+                    <table id="example" class="table table-striped table-bordered" style="width:100%; background-color: hsla(187, 81%, 71%, 0.2);">
+                        <thead>
+                            <tr>
+                                <th>Codigo Paciente</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Edad</th>
+                                <th>Nombre de Familiar</th>
+                                <th>Causa</th>
+                                <th><i class="fas fa-trash-alt"></i> Editar</th>
+                                <th><i class="fas fa-edit"></i> Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php 
+                                while($filas=mysqli_fetch_assoc($resultado)){
+                             ?> 
+                            <tr>
+                                <td><?php echo $filas['Cod_pac'] ?></td>
+                                <td><?php echo $filas['nombre_pac'] ?></td>
+                                <td><?php echo $filas['Apellido_pac'] ?></td>
+                                <td><?php echo $filas['Edad_pac'] ?></td>
+                                <td><?php echo $filas['NomFam_pac'] ?></td>
+                                <td><?php echo $filas['Causa'] ?></td>
+                                <td><?php echo "<a class='btn btn-warning fas fa-edit' href='../app/editarPaciente.php?id=".$filas['Cod_pac']."'>Editar</a>" ?></td>
+                                <td><?php echo "<a class='btn btn-danger fas fa-trash-alt' href='../app/eliminarPaciente.php?id=".$filas['Cod_pac']."'> Eliminar</a>" ?></td>
+
+                            </tr>
+                            <?php 
+                                }
+                             ?>
+                        </tbody>
+                    </table>
+                    <?php 
+                        mysqli_close($conexion);
+                     ?>
+                </div>
+            </div>
+        </div>
 
     </main>
     <footer>
