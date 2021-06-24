@@ -103,29 +103,5 @@ CREATE TABLE administracion (
     VALUES ('Eliminar','Medico',old.Nombre_med,' ',LEFT(USER(), INSTR(USER(), '@') - 1),CURDATE(),TIME(NOW()));
  END;$$
  
-  DELIMITER $$
- CREATE TRIGGER insertar_ing
- AFTER INSERT ON ingreso
- FOR EACH ROW
- BEGIN
-	INSERT INTO administracion(accion,tabla_modificada,dato_anterior,dato_nuevo,modificado_por,fecha_modificado,hora_modificada)
-    VALUES ('Insertar','Ingreso',' ',new.Habitacion,LEFT(USER(), INSTR(USER(), '@') - 1),CURDATE(),TIME(NOW()));
- END;$$
  
-  DELIMITER $$
- CREATE TRIGGER modificar_ing
- AFTER UPDATE ON ingreso
- FOR EACH ROW
- BEGIN
-	INSERT INTO administracion(accion,tabla_modificada,dato_anterior,dato_nuevo,modificado_por,fecha_modificado,hora_modificada)
-    VALUES ('Modificar','Ingreso',old.Habitacion,new.Habitacion,LEFT(USER(), INSTR(USER(), '@') - 1),CURDATE(),TIME(NOW()));
- END;$$
- 
-  DELIMITER $$
- CREATE TRIGGER eliminar_ing
- AFTER DELETE ON ingreso
- FOR EACH ROW
- BEGIN
-	INSERT INTO administracion(accion,tabla_modificada,dato_anterior,dato_nuevo,modificado_por,fecha_modificado,hora_modificada)
-    VALUES ('Eliminar','Ingreso',old.Habitacion,' ',LEFT(USER(), INSTR(USER(), '@') - 1),CURDATE(),TIME(NOW()));
- END;$$
+
