@@ -28,7 +28,7 @@
             <a href="dash.php"><i class="fas fa-clinic-medical"></i> Inicio</a>
             <a href="UiPacientes.php"><i class="fas fa-procedures"></i> Pacientes</a>
             <a href="UiMedicos.php"><i class="fas fa-user-md"></i> Médicos</a>
-            <a href="UiIngresos.php"><i class="fas fa-ambulance"></i> Ingresos</a>
+            <a href="UiIngresos.php"><i class="fas fa-ambulance"></i> Cambios</a>
             <a id="exit" href="../index.php"><i class="fas fa-times-circle"></i> Salir</a>
             <!-- <a href="#">Contacto</a> -->
         </nav>
@@ -46,43 +46,64 @@
         </div>
 
     </header>
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12">
-            <button id="Modal" class="btn btn-dark">Agregar Ingreso</button>
-        </div>
-        
-    </div>
-</div>
     <main>
+        <?php 
+            include "../app/Conexion.php";
+            $sql= "SELECT * FROM administracion";
+            $resultado= mysqli_query($conexion, $sql);
+         ?>
         <div class="container">
             <div class="row">
+                <div class="col-ms-12">
+                    <h1 class="text-center">Cambios Realizados en el sistema</h1>
+                    <!-- <a class="btn btn-dark items-align" href="../app/agregarPaciente.php">Nuevo Paciente</a> -->
+                </div>
+            </div>
+            <hr>
+            <hr>
+            <div class="row mt-5">
                 <div class="col-sm-12">
-                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                    <table id="example" class="table table-striped table-bordered"
+                        style="width:100%; background-color: hsla(187, 81%, 71%, 0.2);">
                         <thead>
                             <tr>
-                                <th>Habitacion</th>
-                                <th>Fecha de ingreso</th>
-                                <th>Hora de ingreso</th>
-                                <th>Codigo Medico</th>
-                                <th>Codigo Paciente</th>
-                                <th><i class="fas fa-trash-alt"></i> Eliminar</th>
-                                <th><i class="fas fa-edit"></i> Editar</th>
+                                <th>Id</th>
+                                <th>accion</th>
+                                <th>Tabla Modificada</th>
+                                <th>Dato Anterior</th>
+                                <th>Dato Nuevo</th>
+                                <th>Modificado Por:</th>
+                                <th>Fecha de Modificación</th>
+                                <th>Hora de Modificación</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <?php 
+                                while($filas=mysqli_fetch_assoc($resultado)){
+                             ?>
                             <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
+                                <td><?php echo $filas['id'] ?></td>
+                                <td><?php echo $filas['accion'] ?></td>
+                                <td><?php echo $filas['tabla_modificada'] ?></td>
+                                <td><?php echo $filas['dato_anterior'] ?></td>
+                                <td><?php echo $filas['dato_nuevo'] ?></td>
+                                <td><?php echo $filas['modificado_por'] ?></td>
+                                <td><?php echo $filas['fecha_modificado']; ?></td>
+                                <td><?php echo $filas['hora_modificada']; ?></td>
+
                             </tr>
+                            <?php 
+                                }
+                             ?>
                         </tbody>
                     </table>
+                    <?php 
+                        mysqli_close($conexion);
+                     ?>
                 </div>
             </div>
         </div>
+
     </main>
 
 
@@ -117,7 +138,7 @@
     <script src="../js/Table.js"></script>
     <script type="text/javascript">
         Swal.fire(
-            'Estas en el apartado de Ingresos',
+            'Estas en el apartado de Cambios del sistema',
             '',
             'success'
         )

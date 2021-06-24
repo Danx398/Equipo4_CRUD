@@ -25,14 +25,14 @@
             <a href="dash.php"><i class="fas fa-clinic-medical"></i> Inicio</a>
             <a href="UiPacientes.php"><i class="fas fa-procedures"></i> Pacientes</a>
             <a href="UiMedicos.php"><i class="fas fa-user-md"></i> Médicos</a>
-            <a href="UiIngresos.php"><i class="fas fa-ambulance"></i> Ingresos</a>
+            <a href="UiIngresos.php"><i class="fas fa-ambulance"></i> Cambios</a>
             <a href="../index.php"><i class="fas fa-sign-out-alt"></i> Salir</a>
             <!-- <a href="#">Contacto</a> -->
         </nav>
         <!-- Para poner un div con una clase se pone .Nombre de la clase -->
         <!-- Para poner una section con una clase se usa section.NombreClass -->
         <section class="textos-header">
-            <h1 class="font-italic font-weight-bold">Equipo 4</h1>
+            <h1 class="font-italic font-weight-bold"> <i class="fab fa-empire"></i>Equipo 4 <i class="fab fa-empire"></i></h1>
             <!-- <h2>"Si tienes alguna emergencia, no dudes en llamarnos"</h2> --> 
         </section>
         <div class="wave" style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"

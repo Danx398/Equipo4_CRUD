@@ -28,7 +28,7 @@
             <a href="dash.php"><i class="fas fa-clinic-medical"></i> Inicio</a>
             <a href="UiPacientes.php"><i class="fas fa-procedures"></i> Pacientes</a>
             <a href="UiMedicos.php"><i class="fas fa-user-md"></i> Médicos</a>
-            <a href="UiIngresos.php"><i class="fas fa-ambulance"></i> Ingresos</a>
+            <a href="UiIngresos.php"><i class="fas fa-ambulance"></i> Cambios</a>
             <a href="../index.php"><i class="fas fa-times-circle"></i> Salir</a>
             <!-- <a href="#">Contacto</a> -->
         </nav>
@@ -47,21 +47,55 @@
 
     </header>
     <main>
+        <?php 
+            include "../app/Conexion.php";
+            $sql= "SELECT * FROM medico";
+            $resultado= mysqli_query($conexion, $sql);
+         ?>
         <div class="container">
             <div class="row">
+                <div class="col-ms-12">
+                    <h1 class="text-center">Crud Médicos</h1>
+                    <a class="btn btn-dark items-align" href="../app/agregarMedico.php">Nuevo Médico</a>
+                </div>
+            </div>
+            <hr>
+            <hr>
+            <div class="row mt-5">
                 <div class="col-sm-12">
-                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                    <table id="example" class="table table-striped table-bordered"
+                        style="width:100%; background-color: hsla(187, 81%, 71%, 0.2);">
                         <thead>
                             <tr>
-                                <th>Habitacion</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
+                                <th>Codigo Medico</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th><i class="fas fa-trash-alt"></i> Editar</th>
+                                <th><i class="fas fa-edit"></i> Eliminar</th>
                             </tr>
                         </thead>
+                        <tbody>
+                            <?php 
+                                while($filas=mysqli_fetch_assoc($resultado)){
+                             ?>
+                            <tr>
+                                <td><?php echo $filas['Cod_med'] ?></td>
+                                <td><?php echo $filas['Nombre_med'] ?></td>
+                                <td><?php echo $filas['Apellido_med'] ?></td>
+                                <td><?php echo "<a class='btn btn-warning fas fa-edit' href='../app/editarMedico.php?id=".$filas['Cod_med']."'>Editar</a>" ?>
+                                </td>
+                                <td><?php echo "<a class='btn btn-danger fas fa-trash-alt' href='../app/eliminarMedico.php?id=".$filas['Cod_med']."'> Eliminar</a>" ?>
+                                </td>
+
+                            </tr>
+                            <?php 
+                                }
+                             ?>
+                        </tbody>
                     </table>
+                    <?php 
+                        mysqli_close($conexion);
+                     ?>
                 </div>
             </div>
         </div>

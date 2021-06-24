@@ -28,7 +28,7 @@
             <a href="dash.php"><i class="fas fa-clinic-medical"></i> Inicio</a>
             <a href="UiPacientes.php"><i class="fas fa-procedures"></i> Pacientes</a>
             <a href="UiMedicos.php"><i class="fas fa-user-md"></i> Médicos</a>
-            <a href="UiIngresos.php"><i class="fas fa-ambulance"></i> Ingresos</a>
+            <a href="UiIngresos.php"><i class="fas fa-ambulance"></i> Cambios</a>
             <a href="../index.php"><i class="fas fa-times-circle"></i> Salir</a>
             <!-- <a href="#">Contacto</a> -->
         </nav>
