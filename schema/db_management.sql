@@ -24,18 +24,6 @@ CREATE TABLE medico (
   Apellido_med VARCHAR(45) NOT NULL,
   PRIMARY KEY (Cod_med)
   )engine=InnoDB;
-CREATE TABLE ingreso (
-  Cod_habi INT NOT NULL AUTO_INCREMENT,
-  Habitacion VARCHAR(45) NOT NULL,
-  Fecha_ing DATE NOT NULL,
-  Hora_ing TIME NOT NULL,
-  Cod_pac INT NOT NULL,
-  Cod_med INT NOT NULL,
-  PRIMARY KEY (Cod_habi)
-  )engine=InnoDB;
-
-ALTER TABLE ingreso ADD FOREIGN KEY (Cod_pac) REFERENCES paciente(Cod_pac) ON UPDATE CASCADE,
-					ADD FOREIGN KEY (Cod_med) REFERENCES medico(Cod_med) ON UPDATE CASCADE;
 
 CREATE TABLE administracion (
     id INT NOT NULL AUTO_INCREMENT,
